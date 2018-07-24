@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Pipe HTML Embed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+  	<h1>Pipe HTML Embed Demo</h1> 
+  	<p>Check out the code on <a href="https://github.com/remusnegrota/embed-code-v2.0-demos" target="_blank">GitHub</a></p>
+	<p>See the <a href="https://addpipe.com/embed-code-v2-demos/embed-javascript.html">Pipe JavaScript Embed Demo</a></p>
+	<p>Implementation of the Pipe HTML embed with custom UI</p>
+	<br/>
+	<!-- Pipe HTML Embed -->
+	<piperecorder id="first-recorder" pipe-width="640" pipe-height="360" pipe-qualityurl="avq/720p.xml" pipe-accountHash="2044b9efed932689c4081a749a877413" pipe-eid="1" pipe-showMenu="0" pipe-mrt="120" pipe-sis="0" pipe-asv="0" pipe-mv="1" pipe-st="1" pipe-ssb="1" pipe-dpv="0" pipe-ao="0" pipe-dup="1" pipe-srec="cbmhjlfmbhihimmlofbgkplnhgbgiipn" pipe-cornerradius="8" pipe-bgCol="0xf6f6f6" pipe-menuCol="0xe9e9e9" pipe-normalCol="0x334455" pipe-overCol="0x556677" pipe-payload='{"userId":"55a95eeb936dd30100e0aff6","jobId":"55a7e6555f1bdc010014d6a1", "email":"asdasd@adasdae.com", "link":"https://www.amazon.com/D-G-P-4-W/dp/ref=as_li_ss_tl?ie=UTF8&sr=8-1&keywords=devialet"}'></piperecorder>
+		
+	<div id="controls" class="controls">
+		<button id="recordbtn">Record</button>
+		<button id="stopbtn" disabled>Stop</button>
+		<button id="playbtn" disabled>Play</button>
+		<button id="pausebtn" disabled>Pause</button>
+		<button id="savebtn" disabled>Save</button>
+		<button id="removebtn">Remove</button>
+	</div>
+	
+	<br/>
+	
+	<p>HTML Embed with default UI</p>
+	<br/>
+	<!-- Pipe Second HTML Embed -->
+	<piperecorder id="second-recorder" pipe-width="320" pipe-height="270" pipe-qualityurl="avq/240p.xml" pipe-accountHash="2044b9efed932689c4081a749a877413" pipe-eid="1" pipe-showMenu="1" pipe-mrt="120" pipe-sis="0" pipe-asv="0" pipe-mv="1" pipe-st="1" pipe-ssb="1" pipe-dpv="0" pipe-ao="0" pipe-dup="1" pipe-srec="cbmhjlfmbhihimmlofbgkplnhgbgiipn" pipe-cornerradius="8" pipe-bgCol="0xf6f6f6" pipe-menuCol="0xe9e9e9" pipe-normalCol="0x334455" pipe-overCol="0x556677" pipe-payload='{"userId":"55a95eeb936dd30100e0aff6","jobId":"55a7e6555f1bdc010014d6a1", "email":"asdasd@adasdae.com", "link":"https://www.amazon.com/D-G-P-4-W/dp/ref=as_li_ss_tl?ie=UTF8&sr=8-1&keywords=devialet"}'></piperecorder>
+	<br/>
+	
+	<h3>Log</h3>
+	<pre id="log"></pre>
+
+  	<!-- Inserting the pipe.js and pipe.css -->
+	<link rel="stylesheet" href="//cdn.addpipe.com/2.0/pipe.css"/>
+	<script type="text/javascript" src = "//cdn.addpipe.com/2.0/pipe.js"></script>
+	
+	<!-- Our custom code for implementing Pipe -->
+	<script src="js/embed-html.js"></script>
+
+  </body>
+</html>

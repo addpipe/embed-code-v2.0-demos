@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Pipe JavaScript Embed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+  	<h1>Pipe JavaScript Embed Demo</h1> 
+  	<p>Check out the code on <a href="https://github.com/remusnegrota/embed-code-v2.0-demos" target="_blank">GitHub</a></p>
+	<p>See the <a href="https://addpipe.com/embed-code-v2-demos/embed-html.html">Pipe HTML Embed Demo</a></p>
+	<p>Implementation of the Pipe JavaScript embed v2.0 with custom UI</p>
+	<br/>
+	<!-- Div that will be replaced with a Pipe recorder -->
+	<div id="first-recorder"></div>
+	
+	<div id="controls" class="controls">
+		<button id="recordbtn">Record</button>
+		<button id="stopbtn" disabled>Stop</button>
+		<button id="playbtn" disabled>Play</button>
+		<button id="pausebtn" disabled>Pause</button>
+		<button id="savebtn" disabled>Save</button>
+		<button id="removebtn">Remove First Recorder</button>
+	</div>
+	
+	
+	<p>Pipe JavaScript embed v2.0 with default UI</p>
+	<br/>
+	<!-- Div that will be replaced with a Pipe recorder -->
+	<div id="second-recorder"></div>
+	<div class="controls">
+		<button id="addbtn">Add Second Recorder</button>
+		<button id="removebtn2" disabled>Remove Second Recorder</button>
+	</div>	
+	<br/>
+	<h3>Log</h3>
+	<pre id="log"></pre>
+
+  	<!-- Inserting the pipe.js and pipe.css -->
+	<link rel="stylesheet" href="//cdn.addpipe.com/2.0/pipe.css"/>
+	<script type="text/javascript" src = "//cdn.addpipe.com/2.0/pipe.js"></script>
+	
+	<!-- Our custom code for implementing Pipe -->
+	<script src="js/embed-javascript.js"></script>
+
+  </body>
+</html>
