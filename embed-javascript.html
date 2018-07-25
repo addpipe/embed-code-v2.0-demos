@@ -2,21 +2,20 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Pipe JavaScript Embed</title>
+    <title>Pipe Embed v2.0 JavaScript Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-  	<h1>Pipe JavaScript Embed Demo</h1> 
-  	<p>Check out the code on <a href="https://github.com/remusnegrota/embed-code-v2.0-demos" target="_blank">GitHub</a></p>
-	<p>See the <a href="https://addpipe.com/embed-code-v2-demos/embed-html.html">Pipe HTML Embed Demo</a></p>
-	<p>Implementation of the Pipe JavaScript embed v2.0 with custom UI</p>
+  	<h1>Pipe Embed v2.0 JavaScript Demo</h1> 
+	<p>This is a demo implementation of the Pipe embed code v2.0 JavaScript version with custom UI and controlled through the JavaScript events and control API. The default menu is hidden. Check out the code on <a href="https://github.com/addpipe/embed-code-v2.0-demos" target="_blank">GitHub</a>.</p>
+	<p>You can also check out the <a href="https://addpipe.com/embed-code-v2-demos/embed-html.html">Pipe Embed v2.0 HTML Demo</a></p>
 	<br/>
 	<!-- Div that will be replaced with a Pipe recorder -->
 	<div id="first-recorder"></div>
 	
 	<div id="controls" class="controls">
-		<button id="recordbtn">Record</button>
+		<button id="recordbtn" disabled>Record</button>
 		<button id="stopbtn" disabled>Stop</button>
 		<button id="playbtn" disabled>Play</button>
 		<button id="pausebtn" disabled>Pause</button>
@@ -24,9 +23,8 @@
 		<button id="removebtn">Remove First Recorder</button>
 	</div>
 	
-	
-	<p>Pipe JavaScript embed v2.0 with default UI</p>
 	<br/>
+	<p>The 2.0 embed code supports multiple recorders on the page. The example below illustrates how easily a Pipe recorder can be added and removed from a page. This allows it to be easily integrated in single page apps built with React, Angular or Vue. This here for example inserts and removes a Pipe recorder with default UI.</p>
 	<!-- Div that will be replaced with a Pipe recorder -->
 	<div id="second-recorder"></div>
 	<div class="controls">

@@ -33,6 +33,9 @@ PipeSDK.insert('first-recorder', pipeParams, function(recorderInserted){
 		var args = Array.prototype.slice.call(arguments);
 		__log("onReadyToRecord("+args.join(', ')+")");
 		
+		//enabling the record button
+		recbtn.disabled = false;		
+		
 		//adding onclick events to the buttons
 		recbtn.onclick = function (){
 			//calling the control API method
@@ -90,8 +93,13 @@ PipeSDK.insert('first-recorder', pipeParams, function(recorderInserted){
 		//calling the control API method
 		recorderInserted.remove();
 		
-		//disabling the remove button
+		//disabling all the buttons
 		removebtn.disabled = true;
+		pausebtn.disabled = true;
+		stopbtn.disabled = true;
+		recbtn.disabled = true;
+		playbtn.disabled = true;
+		savebtn.disabled = true;
 	}
 	
 	

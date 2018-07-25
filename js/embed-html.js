@@ -17,6 +17,9 @@ PipeSDK.onRecordersInserted = function(){
 		var args = Array.prototype.slice.call(arguments);
 		__log("onReadyToRecord("+args.join(', ')+")");
 		
+		//enabling the record button
+		recbtn.disabled = false;
+		
 		//adding onclick events to the buttons
 		recbtn.onclick = function (){
 			//calling the control API method
