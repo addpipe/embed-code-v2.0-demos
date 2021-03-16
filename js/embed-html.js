@@ -11,6 +11,13 @@ PipeSDK.onRecordersInserted = function(){
 	pausebtn = document.getElementById("pausebtn");
 	savebtn = document.getElementById("savebtn");
 	removebtn = document.getElementById("removebtn");
+
+	//disable the record button untill we get the OK from onReadyToRecord
+	recbtn.disabled = true;
+
+	//disable the play and save buttons untill we have something to play or save
+	playbtn.disabled = true;
+	savebtn.disabled = true;
 	
 	//Calling control API methods when the desktop event function onReadyToRecord() is triggered
 	tagRecorder.onReadyToRecord = function(id, type){
