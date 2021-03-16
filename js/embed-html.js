@@ -143,6 +143,10 @@ PipeSDK.onRecordersInserted = function(){
 		//enabling play button, disabling pause button
 		playbtn.disabled = false;
 		pausebtn.disabled = true;
+
+		//enabling record and save buttons
+		savebtn.disabled = false;
+		recbtn.disabled = false;
 	}
 	
 	tagRecorder.onRecordingStarted = function(id){
