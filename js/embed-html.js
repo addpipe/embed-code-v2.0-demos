@@ -35,6 +35,10 @@ PipeSDK.onRecordersInserted = function(){
 			//enabling the stop button, disabling the record button
 			recbtn.disabled = true;
 			stopbtn.disabled = false;
+
+			//subsequent recordings should disable the newly enabled ability to play or save until we have a new recording
+			playbtn.disabled = true;
+			savebtn.disabled = true;
 		}
 		
 		stopbtn.onclick = function (){
