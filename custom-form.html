@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Form With Video Recorder - addpipe.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Try our simple Bootstrap form with a video recorder.">
+    <link rel="canonical" href="https://addpipe.com/embed-code-v2-demos/custom-form.html"/>
+    <link rel="stylesheet" href="custom-form.css">
+    <link rel="stylesheet" href="https://cdn.addpipe.com/2.0/pipe.css">
+
+    <script src="js/custom-form.js"></script>
+    <script type="text/javascript" src="https://cdn.addpipe.com/2.0/pipe.js"></script>
+
+    <!-- Plausible Analytics -->
+    <script defer data-domain="addpipe.com" src="https://plausible.io/js/script.js"></script>
+  
+    <style>
+        body {
+            line-height: 1.5;
+            font-family: sans-serif;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            color:black;
+            margin:2em;
+        }
+
+        h1 {
+            text-decoration: underline red;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 6px;
+            font-size: 220%;
+            font-weight: bold;
+            text-align: center;
+        }
+        .description{
+            text-align: center;
+            max-width: 650px;
+        }
+        @media(max-width: 600px){
+            #pipeRecordRTC-custom-id,
+            #pipeVrec-custom-id {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body class="d-flex flex-column align-items-center justify-content-center">
+    <h1>Simple Form With Video Recorder</h1>
+    <p class="description">Made by the <a href="https://addpipe.com" target="_blank">Pipe Video Recording Platform</a></p>
+    <p class="description">The form below uses the Pipe Video Recording Client to collect video responses. A hidden input field will store the recording URL. All the collected data will be POST-ed to the URL of your choice. On the server side, you can use anything to receive and process the data. Check out the code on <a href="https://github.com/addpipe/embed-code-v2.0-demos" target="_blank">GitHub</a>.</p>
+
+    <form id="formWithVideoRecorder" class="pt-4">
+        <div class="mb-3">
+            <label for="firstName" class="form-label fw-bold">First Name<sup class="text-danger fs-6">*</sup></label>
+            <input type="text" class="form-control" id="firstName">
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label fw-bold">Last Name<sup class="text-danger fs-6">*</sup></label>
+            <input type="text" class="form-control" id="lastName">
+        </div>
+        <div class="mb-3">
+            <label for="emailAddress" class="form-label fw-bold">Email Address<sup class="text-danger fs-6">*</sup></label>
+            <input type="email" class="form-control" id="emailAddress" >
+        </div>
+        <div class="mb-3">
+            <label for="comments" class="form-label fw-bold">Comments</label>
+            <textarea class="form-control" id="comments" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="video" class="form-label fw-bold">Video<sup class="text-danger fs-6">*</sup></label>
+            <p>Record a quick video to describe your issue; 2 minutes max; you can re-record if necessary.</p>
+            <piperecorder id="custom-id" pipe-width="640" pipe-height="390" pipe-qualityurl="avq/360p.xml" pipe-accounthash="NON-EXISTENT-HASH-SO-THAT-THE-VIDEOS-ARE-NOT-PROCESSED-AT-ALL" pipe-eid="j2HCiP" pipe-mrt="600" pipe-avrec="1"></piperecorder>
+        </div>
+        <div class="mb-3">
+            <input type="hidden" class="form-control" id="recordingURL">
+        </div>
+        <div id="terms" class="checkbox mb-3">
+            <div class="form-check form-switch">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" id="termsCheck" name="termsCheck">
+                        I've read and agree with the Terms of Service and DPA <sup class="text-danger fs-6">*</sup>
+                </label>
+            </div>
+        </div>
+        <button id="submitBtn" type="submit" class="btn btn-primary" disabled>Submit</button>
+    </form>
+    <script>
+
+        let recordingReady = false;
+        let firstNameValid = false;
+        let lastNameValid = false;
+        let emailAddressValid = false;
+        let termsChecked = false;
+
+        // This is the function used to update the state for the Submit button.
+        function updateSubmitState() {
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = !(recordingReady && firstNameValid && lastNameValid && emailAddressValid && termsChecked);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const firstName = document.getElementById('firstName');
+            const lastName = document.getElementById('lastName');
+            const emailAddress = document.getElementById('emailAddress');
+            const termsCheck = document.getElementById('termsCheck');
+
+            firstName.addEventListener('input', function () {
+                firstNameValid = firstName.value.trim() !== '';
+                updateSubmitState();
+            });
+            lastName.addEventListener('input', function () {
+                lastNameValid = lastName.value.trim() !== '';
+                updateSubmitState();
+            });
+            emailAddress.addEventListener('input', function () {
+                emailAddressValid = emailAddress.value.trim() !== '';
+                updateSubmitState();
+            });
+            termsCheck.addEventListener('change', function () {
+                termsChecked = termsCheck.checked;
+                updateSubmitState();
+            });
+        });
+
+        PipeSDK.onRecordersInserted = function () {
+        
+          const accountHash = "NON-EXISTENT-HASH-SO-THAT-THE-VIDEOS-ARE-NOT-PROCESSED-AT-ALL";
+          const formFieldId = "recordingURL";
+        
+          myRecorder = PipeSDK.getRecorderById('custom-id');
+          //This is the function that uses the location and streamName for recordings maid to our main Recorder Client.
+          myRecorder.onSaveOk = function (recorderId, streamName, streamDuration, cameraName, micName, audioCodec, videoCodec, fileType, videoId, audioOnly, location) {
+            console.log('onSaveOk('+arguments+')');
+            document.getElementById(formFieldId).value = "https://" + location + "/" + accountHash + "/" + streamName + ".mp4";
+            recordingReady = true;
+            updateSubmitState();
+          };
+          //This is the function called when we upload a video though the main Recording Client.
+          myRecorder.onDesktopVideoUploadSuccess = function(recorderId, filename, filetype, videoId, audioOnly, location){
+              console.log('onDesktopVideoUploadSuccess('+arguments+')')
+              document.getElementById(formFieldId).value = "https://" + location + "/" + accountHash + "/" + filename + ".mp4";
+              recordingReady = true;
+              updateSubmitState();
+          };
+          //This is the function used with our Legacy Mobile Recorder Client.
+          myRecorder.onVideoUploadSuccess = function(recorderId, filename, filetype, videoId, audioOnly, location) {
+              console.log('onVideoUploadSuccess('+arguments+')')
+              document.getElementById(formFieldId).value = "https://" + location + "/" + accountHash + "/" + filename + ".mp4";
+              recordingReady = true;
+              updateSubmitState();
+          };
+        };
+
+        document.getElementById('formWithVideoRecorder').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+        });
+
+    </script>
+</body>
+</html>
