@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Recorder With Vertical Style Teleprompter - addpipe.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Video recording interface with a vertical-style teleprompter that scrolls text upward while recording.">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdn.addpipe.com/2.0/pipe.css">
+    <script type="text/javascript" src="https://cdn.addpipe.com/2.0/pipe.js"></script>
+    
+    <style>
+        .prompter-container {
+            width: 100%;
+            height: 300px; 
+            overflow: hidden;
+            border: 2px solid #ccc;
+            background: #111; 
+            position: relative;
+        }
+        
+        .prompter-text {
+            position: absolute;
+            top: 100%; 
+            width: 100%;
+            color: #fff;
+            font-size: 24px;
+            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        .description{
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column align-items-center justify-content-center">
+    <h1>Video Recorder With Vertical Style Teleprompter</h1>
+
+    <p class="description">Starting a video recording will trigger the teleprompter.</p>
+    <piperecorder id="custom-id" pipe-width="640" pipe-height="390" pipe-qualityurl="avq/480p.xml" pipe-accounthash="1edfef4c4967d69b7129ec3ffa534002" pipe-eid="j2HCiP" pipe-mrt="600" pipe-avrec="1"></piperecorder>
+    
+    <div class="prompter-container">
+        <div id="teleprompter-content" class="prompter-text">
+            <p>Shall I compare thee to a summer’s day?</p>
+            <p>Thou art more lovely and more temperate:</p>
+            <p>Rough winds do shake the darling buds of May,</p>
+            <p>And summer’s lease hath all too short a date;</p>
+            <p>Sometime too hot the eye of heaven shines,</p>
+            <p>And often is his gold complexion dimm’d;</p>
+            <p>And every fair from fair sometime declines,</p>
+            <p>By chance or nature’s changing course untrimm’d;</p>
+            <p>But thy eternal summer shall not fade,</p>
+            <p>Nor lose possession of that fair thou ow’st;</p>
+            <p>Nor shall death brag thou wander’st in his shade,</p>
+            <p>When in eternal lines to time thou grow’st:</p>
+            <p>So long as men can breathe or eyes can see,</p>
+            <p>So long lives this, and this gives life to thee</p>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button onclick="toggleScroll()">Start/Pause</button>
+        <button onclick="resetScroll()">Reset</button>
+    </div>
+
+    <script>
+        const content = document.getElementById('teleprompter-content');
+        let scrollPos = 0;
+        let isPaused = true;
+        let speed = 1; // Increase this number to scroll faster
+        
+        function scroll() {
+            if (!isPaused) {
+                scrollPos -= speed;
+                content.style.transform = `translateY(${scrollPos}px)`;
+                
+                // Loop back to start if the text finishes (optional)
+                if (Math.abs(scrollPos) > content.offsetHeight + 300) {
+                    scrollPos = 300; 
+                }
+            }
+            requestAnimationFrame(scroll);
+        }
+        
+        function toggleScroll() {
+            isPaused = !isPaused;
+        }
+        
+        function resetScroll() {
+            scrollPos = 0;
+            content.style.transform = `translateY(0px)`;
+            isPaused = true;
+        }
+        
+        // Initialize the animation loop
+        requestAnimationFrame(scroll);
+        
+        
+        //get recorder pbject
+        PipeSDK.onRecordersInserted = function(){
+            myRecorderObject =  PipeSDK.getRecorderById('custom-id');
+            myRecorderObject.btRecordPressed = function(id){
+                var args = Array.prototype.slice.call(arguments);
+                console.log("btRecordPressed("+args.join(', ')+")");
+            resetScroll();
+            toggleScroll();
+            }
+            myRecorderObject.btStopRecordingPressed = function(recorderId){
+            var args = Array.prototype.slice.call(arguments);
+            console.log("btStopRecordingPressed("+args.join(', ')+")");
+            toggleScroll();
+            }
+        }
+                
+    </script>
+</body>
+</html>
