@@ -63,7 +63,7 @@ Plaintext
 
 
 └── style.css                                # Basic styling for the demo layout
-└── custom-form.css                          # Bootstrap v5.3.6 for the custom form layout
+└── bootstrap.min.css                        # Bootstrap v5.3.6 for the custom form layout
 ├── js/
     └── custom-form.js                       # Logic for the Custom Form JS demo
 │   ├── embed-html.js                        # Logic for the HTML Tag demo
