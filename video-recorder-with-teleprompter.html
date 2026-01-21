@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Video Recorder With Teleprompter - addpipe.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Video recording interface with a vertical-style teleprompter that scrolls text upward while recording.">
+    <meta name="description" content="Video recorder with a teleprompter that scrolls text upward while recording.">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdn.addpipe.com/2.0/pipe.css">
     <script type="text/javascript" src="https://cdn.addpipe.com/2.0/pipe.js"></script>
@@ -36,11 +36,9 @@
     </style>
 </head>
 <body class="d-flex flex-column align-items-center justify-content-center">
-
-    <p class="description">Starting a video recording will trigger the teleprompter.</p>
     <h1>Video Recorder With Teleprompter</h1>
+    <p class="description">This demo page embeds the <a href="https://addpipe.com/recording-client/" target="_blank">Pipe video recording client</a> and a teleprompter. The two are linked through the recorder's <a href="https://addpipe.com/docs/javascript/js-api-v2/#javascript-events-api-v20-recording-client" target="_blank">JS Events API</a>. When you start recording, the teleprompter also starts.</p>
     <piperecorder id="custom-id" pipe-width="640" pipe-height="390" pipe-qualityurl="avq/480p.xml" pipe-accounthash="1edfef4c4967d69b7129ec3ffa534002" pipe-eid="j2HCiP" pipe-mrt="600" pipe-avrec="1"></piperecorder>
-    
     <div class="prompter-container">
         <div id="teleprompter-content" class="prompter-text">
             <p>Shall I compare thee to a summer’s day?</p>
