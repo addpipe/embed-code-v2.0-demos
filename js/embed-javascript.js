@@ -4,7 +4,7 @@
 var pipeParams = {
 	size: {width:640,height:360},
 	qualityurl: "avq/720p.xml", 
-	accountHash:"1edfef4c4967d69b7129ec3ffa534002", 
+	accountHash:"NON-EXISTENT-HASH-SO-THAT-THE-VIDEOS-ARE-NOT-PROCESSED-AT-ALL", 
 	payload:'{"userId":"55a95eeb936dd30100e0aff6","jobId":"55a7e6555f1bdc010014d6a1"}', 
 	eid:5, 
 	showMenu:0, 
@@ -249,7 +249,7 @@ PipeSDK.insert('first-recorder', pipeParams, function(recorderInserted){
 var pipeParams2 = {
 	size: {width:320,height:270},
 	qualityurl: "avq/240p.xml", 
-	accountHash:"1edfef4c4967d69b7129ec3ffa534002", 
+	accountHash:"NON-EXISTENT-HASH-SO-THAT-THE-VIDEOS-ARE-NOT-PROCESSED-AT-ALL", 
 	payload:'{"userId":"55a95eeb936dd30100e0aff6","jobId":"55a7e6555f1bdc010014d6a1"}', 
 	eid:5, 
 	showMenu:1, 

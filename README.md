@@ -51,7 +51,7 @@ You can open the `.html` files directly in your browser.
 - Note: Modern browsers require a secure context (HTTPS) or `localhost` to access the camera and microphone. If you are not opening the file locally, ensure your server uses HTTPS.
 
 ## 🛠 Configuration
-The demos use a public demo account hash (`1edfef4c4967d69b7129ec3ffa534002`). To use these with your own Pipe account:
+The demos use a public demo account hash (`NON-EXISTENT-HASH-SO-THAT-THE-VIDEOS-ARE-NOT-PROCESSED-AT-ALL`). To use these with your own Pipe account:
 1. Log in to your [Pipe Account Dashboard](https://dashboard.addpipe.com/signup)
 2. Navigate to the **Account** section.
 3. Copy your unique **Account Hash**.
