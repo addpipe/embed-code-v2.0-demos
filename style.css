@@ -92,6 +92,9 @@ li {
 ul{
   padding-left: 2rem;
 }
+.add-padding-bottom{
+  padding-bottom: 20px;
+}
 @media(max-width: 600px){
   #pipeRecordRTC-custom-id,
   #pipeVrec-custom-id {
