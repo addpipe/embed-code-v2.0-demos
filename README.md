@@ -59,8 +59,6 @@ The demos use a public demo account hash (`NON-EXISTENT-HASH-SO-THAT-THE-VIDEOS-
 
 ## 📁 File Structure
 ```` Plaintext
-Plaintext
-
 
 └── style.css                                # Basic styling for the demo layout
 └── bootstrap.min.css                        # Bootstrap v5.3.6 for the custom form layout
